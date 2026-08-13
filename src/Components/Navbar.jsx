@@ -42,7 +42,22 @@ const Navbar = () => {
           >
             {i18n.language === "en" ? "اردو" : "English"}
           </div>
-          <UserRound />
+      <div className="relative group cursor-pointer flex flex-col items-center justify-center hover:text-blue-500">
+  <UserRound className="h-6 w-6" />
+
+  <span className="mt-1 text-sm">
+    Contact
+  </span>
+
+  <div className="absolute top-full mt-3 hidden group-hover:block z-50">
+    <div className="relative rounded-lg bg-gray-900 px-4 py-2 text-sm text-white shadow-xl">
+      03326325661
+
+      {/* Arrow */}
+      <div className="absolute -top-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 bg-gray-900"></div>
+    </div>
+  </div>
+</div>
           <ShoppingBasket />
         </div>
       </div>

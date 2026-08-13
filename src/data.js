@@ -1,13 +1,13 @@
-import bodyKit from "../src/assets/Apple.jpeg";
-import engine from "../src/assets/engine.jpg";
-import brake from "../src/assets/brake.jpg";
-import suspension from "../src/assets/suspension.jpg";
-import alloyWheel from "../src/assets/alloy-wheel.jpg";
-import headlight from "../src/assets/headlight.jpg";
-import exhaust from "../src/assets/exhaust.jpg";
-import battery from "../src/assets/battery.jpg";
-import seatCover from "../src/assets/seat-cover.jpg";
-import spoiler from "../src/assets/spoiler.jpg";
+import bodyKit from "../src/assets/Kit.png";
+import engine from "../src/assets/Engine.png";
+import brake from "../src/assets/Brake.png";
+import suspension from "../src/assets/Suspension.png";
+import alloyWheel from "../src/assets/Rim.png";
+import headlight from "../src/assets/Headlight.png";
+import exhaust from "../src/assets/Exhaust.png";
+import battery from "../src/assets/Battery.png";
+import seatCover from "../src/assets/Seat.png";
+import spoiler from "../src/assets/Spoiler.png";
 
 // data.js
 
