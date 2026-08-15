@@ -67,7 +67,7 @@ const Navbar = () => {
             onClick={() => {
               setOpen(!open);
             }}
-            className="relative group cursor-pointer bg-red-400 flex flex-col items-center justify-center hover:text-blue-500"
+            className="relative group cursor-pointer  flex flex-col items-center justify-center hover:text-blue-500"
           >
             <UserRound className="h-6 w-6" />
 
