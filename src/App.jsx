@@ -8,15 +8,18 @@ import Objcard from './Components/Objcard'
 import ProductsPage from './Pages/ProductsPage'
 import Cart from './Components/Cart'
 import Footer from './Components/Footer'
+import Contact from './Components/Contact'
 
 function App() {
+    const [open, setOpen] = useState(false);
   return (
-    <>
-      <Navbar />
+    <div className="relative">
+      <Navbar open={open} setOpen={setOpen} />
       <ProductsPage />
       <Cart />
+     <div className="absolute z-20 top-1 left-1  "> <Contact/></div>
       <Footer />
-    </>
+    </div>
   )
 }
 
