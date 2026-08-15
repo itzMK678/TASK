@@ -17,7 +17,7 @@ function App() {
       <Navbar open={open} setOpen={setOpen} />
       <ProductsPage />
       <Cart />
-     <div className="absolute z-20 top-1 left-1  "> <Contact/></div>
+     {/* <div className="absolute z-20 top-1 left-1  "> <Contact/></div> */}
       <Footer />
     </div>
   )
