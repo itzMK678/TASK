@@ -4,7 +4,6 @@ import {
   MapPin,
   Truck,
   UserRound,
-  ShoppingBasket,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Contact from "./Contact";
@@ -15,7 +14,7 @@ const Navbar = () => {
 
   const [open, setOpen] = useState(false);
 
-  // Toggle between English and Arabic
+  // ================= LANGUAGE =================
   const toggleLanguage = () => {
     const nextLang = i18n.language === "en" ? "ar" : "en";
 
@@ -25,113 +24,296 @@ const Navbar = () => {
   };
 
   return (
-    <div className="relative w-full bg-[#F7F7FA] border border-b-gray-300 ">
+    <div className="relative w-full max-w-full overflow-x-clip bg-[#F7F7FA] border border-b-gray-300">
 
-      {/* Top Offer Bar */}
-      <div className="bg-black w-full text-white text-center py-2">
+      {/* =====================================================
+          TOP OFFER BAR
+      ====================================================== */}
+      <div className="w-full bg-black py-2 text-center text-xs text-white sm:text-sm">
         Best offers on best quality
       </div>
 
-      {/* Main Navbar */}
-      <div className="flex items-center justify-between p-4">
+      {/* =====================================================
+          MAIN NAVBAR
+      ====================================================== */}
+      <div
+        className="
+          flex
+          w-full
+          max-w-full
+          items-center
+          gap-2
+          p-2
 
-        {/* Logo */}
-        <div className="logo bg-[#F7F7FA]">
+          min-[375px]:gap-3
+          min-[375px]:p-3
+
+          sm:gap-5
+          sm:p-4
+        "
+      >
+
+        {/* ================= LOGO ================= */}
+        <div className="shrink-0">
           <img
             src={logo}
             alt="Frugo Logo"
-            className="h-16 bg-[#F7F7FA]"
+            className="
+              h-10
+              w-auto
+              object-contain
+
+              min-[375px]:h-12
+
+              sm:h-16
+            "
           />
         </div>
 
-        {/* Search */}
-        <div className="search relative w-3/4 bg-white text-gray-400">
+        {/* ================= SEARCH ================= */}
+        <div
+          className="
+            relative
+            min-w-0
+            flex-1
+          "
+        >
           <input
             type="text"
             placeholder={t("search_placeholder")}
-            className="w-full border border-gray-400 rounded-md py-2 pl-5 pr-4 outline-none"
+            className="
+              w-full
+              min-w-0
+              rounded-md
+              border
+              border-gray-400
+              bg-white
+              py-2
+              pl-3
+              pr-8
+              text-xs
+              outline-none
+
+              min-[375px]:text-sm
+
+              sm:py-2
+              sm:pl-5
+              sm:pr-10
+              sm:text-base
+            "
           />
 
           <Search
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+            className="
+              absolute
+              right-2
+              top-1/2
+              h-4
+              w-4
+              -translate-y-1/2
+              text-gray-400
+
+              min-[375px]:right-3
+
+              sm:h-5
+              sm:w-5
+            "
           />
         </div>
 
-        {/* Right Side */}
-        <div className="flex gap-10 mx-3 items-center">
+        {/* ================= RIGHT SIDE ================= */}
+        <div
+          className="
+            flex
+            shrink-0
+            items-center
+            gap-2
 
-          {/* Language Toggle */}
-          <div
-            className="cursor-pointer px-3 py-1 border rounded hover:bg-gray-200"
+            min-[375px]:gap-3
+
+            sm:gap-6
+            sm:mx-3
+          "
+        >
+
+          {/* LANGUAGE */}
+          <button
+            type="button"
             onClick={toggleLanguage}
+            className="
+              cursor-pointer
+              rounded
+              border
+              px-2
+              py-1
+              text-[10px]
+              hover:bg-gray-200
+
+              min-[375px]:px-2
+              min-[375px]:text-xs
+
+              sm:px-3
+              sm:text-sm
+            "
           >
             {i18n.language === "en" ? "اردو" : "English"}
-          </div>
+          </button>
 
-          {/* Contact Toggle */}
-          <div
+          {/* CONTACT */}
+          <button
+            type="button"
             onClick={() => setOpen((prev) => !prev)}
-            className={`relative cursor-pointer flex flex-col items-center justify-center transition-colors ${
-              open
-                ? "text-blue-500"
-                : "hover:text-blue-500"
-            }`}
-          >
-            <UserRound className="h-6 w-6" />
+            className={`
+              flex
+              shrink-0
+              cursor-pointer
+              flex-col
+              items-center
+              justify-center
+              transition-colors
 
-            <span className="mt-1 text-sm">
+              ${
+                open
+                  ? "text-blue-500"
+                  : "text-gray-700 hover:text-blue-500"
+              }
+            `}
+          >
+            <UserRound
+              className="
+                h-5
+                w-5
+
+                min-[375px]:h-6
+                min-[375px]:w-6
+              "
+            />
+
+            <span
+              className="
+                mt-0.5
+                text-[9px]
+
+                min-[375px]:text-[10px]
+
+                sm:mt-1
+                sm:text-sm
+              "
+            >
               Contact
             </span>
-
-            {/* Phone Number Tooltip */}
-            <div className="absolute top-full mt-3 hidden hover:block group-hover:block">
-              <div className="relative rounded-lg bg-gray-900 px-4 py-2 text-sm text-white shadow-xl">
-                03326325661
-
-                <div className="absolute -top-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 bg-gray-900"></div>
-              </div>
-            </div>
-          </div>
-
+          </button>
         </div>
       </div>
 
-      {/* Categories */}
-      <div className="pl-5 flex pb-3 gap-6 text-[15px] text-gray-400 font-medium border border-t-0 border-b-gray-300 flex-wrap">
+      {/* =====================================================
+          CATEGORIES
+      ====================================================== */}
+      <div
+        className="
+          flex
+          w-full
+          max-w-full
+          flex-wrap
+          gap-3
+          overflow-hidden
+          border
+          border-t-0
+          border-b-gray-300
+          pb-3
+          pl-3
+          text-xs
+          font-medium
+          text-gray-400
 
-        <p className="pr-6 border-r cursor-pointer hover:text-black">
+          min-[375px]:gap-4
+          min-[375px]:pl-4
+          min-[375px]:text-sm
+
+          sm:gap-6
+          sm:pl-5
+          sm:text-[15px]
+        "
+      >
+
+        <p className="cursor-pointer border-r pr-3 hover:text-black min-[375px]:pr-4 sm:pr-6">
           {t("Body Kits")}
         </p>
 
-        <p className="pr-6 border-r cursor-pointer hover:text-black">
+        <p className="cursor-pointer border-r pr-3 hover:text-black min-[375px]:pr-4 sm:pr-6">
           {t("Engine parts")}
         </p>
 
-        <p className="pr-6 border-r cursor-pointer hover:text-black">
+        <p className="cursor-pointer border-r pr-3 hover:text-black min-[375px]:pr-4 sm:pr-6">
           {t("Tyres")}
         </p>
 
-        <p className="pr-6 border-r cursor-pointer hover:text-black">
+        <p className="cursor-pointer border-r pr-3 hover:text-black min-[375px]:pr-4 sm:pr-6">
           {t("Assesories")}
         </p>
 
       </div>
 
-      {/* Location + Delivery */}
-      <div className="flex mx-3 mt-3 justify-between">
+      {/* =====================================================
+          LOCATION + DELIVERY
+      ====================================================== */}
+      <div
+        className="
+          flex
+          w-full
+          max-w-full
+          items-start
+          justify-between
+          gap-2
+          px-2
+          pt-3
 
-        {/* Location */}
-        <div className="flex items-center border border-gray-300 rounded-md overflow-hidden ml-4 mb-2 w-fit">
+          min-[375px]:px-3
 
-          <div className="bg-gray-100 px-2 h-8 flex items-center justify-center">
+          sm:mx-3
+          sm:items-center
+          sm:px-0
+        "
+      >
+
+        {/* LOCATION */}
+        <div
+          className="
+            flex
+            min-w-0
+            max-w-[48%]
+            items-center
+            overflow-hidden
+            rounded-md
+            border
+            border-gray-300
+          "
+        >
+
+          <div className="flex h-8 shrink-0 items-center justify-center bg-gray-100 px-2">
             <MapPin
               size={18}
-              className="h-full text-black"
+              className="text-black"
             />
           </div>
 
           <select
-            className="flex-1 h-8 px-2 text-gray-700 focus:outline-none cursor-pointer"
+            className="
+              h-8
+              min-w-0
+              max-w-full
+              flex-1
+              bg-white
+              px-1
+              text-[10px]
+              text-gray-700
+              outline-none
+
+              min-[375px]:px-2
+              min-[375px]:text-xs
+
+              sm:text-sm
+            "
             defaultValue="Bahawalpur"
           >
             <option value="Bahawalpur">
@@ -152,29 +334,80 @@ const Navbar = () => {
           </select>
         </div>
 
-        {/* Delivery */}
-        <div className=" pl-5 flex flex-wrap">
+        {/* DELIVERY */}
+        <div
+          className="
+            flex
+            min-w-0
+            max-w-[48%]
+            flex-wrap
+            items-center
+            justify-end
+            gap-1
+          "
+        >
 
-          <div className="flex h-8 bg-[#db325e] p-1 rounded-md text-white">
-            <Truck />
+          <div
+            className="
+              flex
+              h-8
+              shrink-0
+              items-center
+              rounded-md
+              bg-[#db325e]
+              p-1
+              text-white
+            "
+          >
+            <Truck className="h-5 w-5" />
 
-            <div className="ml-1 mt-1 text-[12px] font-semibold">
+            <div className="ml-1 text-[9px] font-semibold min-[375px]:text-[10px] sm:text-xs">
               {t("delivery_date")}
             </div>
           </div>
 
-          <div className="mx-2 text-[#db325e] text-[12px] font-bold mt-2">
+          <div
+            className="
+              text-right
+              text-[9px]
+              font-bold
+              text-[#db325e]
+
+              min-[375px]:text-[10px]
+
+              sm:text-xs
+            "
+          >
             {t("delivery_time")}
           </div>
 
         </div>
       </div>
 
-      {/* Contact Popup */}
+      {/* =====================================================
+          CONTACT POPUP
+      ====================================================== */}
       {open && (
-        <div className="  absolute right-1 top-full z-[100]">
+        <div
+          className="
+            absolute
+            left-1
+            right-1
+            top-full
+            z-[100]
+            w-auto
+            max-w-none
+
+            min-[375px]:left-2
+            min-[375px]:right-2
+
+            sm:left-auto
+            sm:right-2
+            sm:w-[400px]
+          "
+        >
           <Contact />
-        </div> 
+        </div>
       )}
 
     </div>
