@@ -25,7 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="absolute w-full bg-[#F7F7FA] border border-b-gray-300 z-50">
+    <div className="relative w-full bg-[#F7F7FA] border border-b-gray-300 ">
 
       {/* Top Offer Bar */}
       <div className="bg-black w-full text-white text-center py-2">
