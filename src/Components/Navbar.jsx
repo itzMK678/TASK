@@ -93,13 +93,11 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Basket */}
-          <ShoppingBasket />
         </div>
       </div>
 
       {/* Categories */}
-      <div className="pl-5 flex pb-3 gap-6 text-[15px] text-gray-400 font-medium border border-t-0 border-b-gray-300">
+      <div className="pl-5 flex pb-3 gap-6 text-[15px] text-gray-400 font-medium border border-t-0 border-b-gray-300 flex-wrap">
 
         <p className="pr-6 border-r cursor-pointer hover:text-black">
           {t("Body Kits")}
@@ -155,7 +153,7 @@ const Navbar = () => {
         </div>
 
         {/* Delivery */}
-        <div className="flex">
+        <div className=" pl-5 flex flex-wrap">
 
           <div className="flex h-8 bg-[#db325e] p-1 rounded-md text-white">
             <Truck />
