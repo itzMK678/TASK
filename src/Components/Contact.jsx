@@ -56,7 +56,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen overflow-hidden bg-gray-100 px-6 py-12">
+    <div className="border border-r-0 rounded-3xl rounded-r-0 min-h-screen overflow-hidden bg-gray-100 px-6 py-12">
 
       {/* Heading */}
       <div className="mx-auto mb-12 max-w-2xl text-center">

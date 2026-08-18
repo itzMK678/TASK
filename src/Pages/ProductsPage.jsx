@@ -29,8 +29,7 @@ const ProductsPage = () => {
       : products.filter((item) => item.type === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-
+    <div className="min-h-screen bg-gray-100 p-4 sm:p-6">
       <Banner />
 
       {/* Page Heading */}
@@ -62,7 +61,7 @@ const ProductsPage = () => {
       </div>
 
       {/* Results Heading */}
-      <div className="mt-10 flex items-center justify-between">
+      <div className="mt-10 flex flex-wrap items-center justify-between gap-3">
         <h2 className="text-2xl font-bold text-gray-800">
           {selectedCategory === "all"
             ? "All Auto Parts"
@@ -76,36 +75,42 @@ const ProductsPage = () => {
         </span>
       </div>
 
-      {/* Products + Poster */}
-      <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      {/* Products */}
+      {filteredProducts.length > 0 ? (
+        <div
+          className="
+            mt-6
+            grid
+            grid-cols-1
+            gap-5
+            sm:grid-cols-2
+            lg:grid-cols-3
+            xl:grid-cols-4
+            2xl:grid-cols-5
+          "
+        >
+          {filteredProducts.map((item, index) => (
+            <React.Fragment key={item.id}>
+              <Objcard
+                obj={item}
+                onClick={() => setSelectedProduct(item)}
+              />
 
-        {filteredProducts.map((item, index) => (
-          <React.Fragment key={item.id}>
-
-            {/* Product Card */}
-            <Objcard
-              obj={item}
-              onClick={() => setSelectedProduct(item)}
-            />
-
-            {/* Poster after every 8 cards */}
-            {index == 7 && (
-              <div className="col-span-full my-4 overflow-hidden rounded-2xl shadow-lg">
-                <img
-                  src={salePoster}
-                  alt="Special Sale Offer"
-                  className="h-auto w-full object-cover"
-                />
-              </div>
-            )}
-
-          </React.Fragment>
-        ))}
-
-      </div>
-
-      {/* No Products */}
-      {filteredProducts.length === 0 && (
+              {/* Poster after 8th product */}
+              {index === 7 && (
+                <div className="col-span-full my-4 overflow-hidden rounded-2xl shadow-lg">
+                  <img
+                    src={salePoster}
+                    alt="Special Sale Offer"
+                    className="h-auto w-full object-cover"
+                  />
+                </div>
+              )}
+            </React.Fragment>
+          ))}
+        </div>
+      ) : (
+        /* No Products */
         <div className="py-16 text-center">
           <h3 className="text-xl font-semibold text-gray-700">
             No products found
@@ -116,7 +121,6 @@ const ProductsPage = () => {
           </p>
         </div>
       )}
-
     </div>
   );
 };

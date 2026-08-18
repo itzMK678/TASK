@@ -1,5 +1,4 @@
-import React   from "react";
-import { useState , useEffect} from "react";
+import React, { useState } from "react";
 import {
   Search,
   MapPin,
@@ -8,16 +7,13 @@ import {
   ShoppingBasket,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import Contact from "./Contact";
 import logo from "../assets/Logo.jpeg";
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
 
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    console.log("Open changed:", open);
-  }, [open]);
 
   // Toggle between English and Arabic
   const toggleLanguage = () => {
@@ -29,12 +25,17 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#F7F7FA] border border-b-gray-300">
+    <div className="absolute w-full bg-[#F7F7FA] border border-b-gray-300 z-50">
+
+      {/* Top Offer Bar */}
       <div className="bg-black w-full text-white text-center py-2">
         Best offers on best quality
       </div>
 
+      {/* Main Navbar */}
       <div className="flex items-center justify-between p-4">
+
+        {/* Logo */}
         <div className="logo bg-[#F7F7FA]">
           <img
             src={logo}
@@ -43,18 +44,23 @@ const Navbar = () => {
           />
         </div>
 
+        {/* Search */}
         <div className="search relative w-3/4 bg-white text-gray-400">
           <input
             type="text"
             placeholder={t("search_placeholder")}
-            className="w-full border border-gray-400 rounded-md py-2 pl-5 pr-4"
+            className="w-full border border-gray-400 rounded-md py-2 pl-5 pr-4 outline-none"
           />
 
-          <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
+          <Search
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+          />
         </div>
 
+        {/* Right Side */}
         <div className="flex gap-10 mx-3 items-center">
-          {/* Language toggle button */}
+
+          {/* Language Toggle */}
           <div
             className="cursor-pointer px-3 py-1 border rounded hover:bg-gray-200"
             onClick={toggleLanguage}
@@ -62,12 +68,14 @@ const Navbar = () => {
             {i18n.language === "en" ? "اردو" : "English"}
           </div>
 
-          {/* Contact */}
+          {/* Contact Toggle */}
           <div
-            onClick={() => {
-              setOpen(!open);
-            }}
-            className="relative group cursor-pointer  flex flex-col items-center justify-center hover:text-blue-500"
+            onClick={() => setOpen((prev) => !prev)}
+            className={`relative cursor-pointer flex flex-col items-center justify-center transition-colors ${
+              open
+                ? "text-blue-500"
+                : "hover:text-blue-500"
+            }`}
           >
             <UserRound className="h-6 w-6" />
 
@@ -75,7 +83,8 @@ const Navbar = () => {
               Contact
             </span>
 
-            <div className="absolute top-full mt-3 hidden group-hover:block z-50">
+            {/* Phone Number Tooltip */}
+            <div className="absolute top-full mt-3 hidden hover:block group-hover:block">
               <div className="relative rounded-lg bg-gray-900 px-4 py-2 text-sm text-white shadow-xl">
                 03326325661
 
@@ -84,11 +93,14 @@ const Navbar = () => {
             </div>
           </div>
 
+          {/* Basket */}
           <ShoppingBasket />
         </div>
       </div>
 
+      {/* Categories */}
       <div className="pl-5 flex pb-3 gap-6 text-[15px] text-gray-400 font-medium border border-t-0 border-b-gray-300">
+
         <p className="pr-6 border-r cursor-pointer hover:text-black">
           {t("Body Kits")}
         </p>
@@ -104,17 +116,25 @@ const Navbar = () => {
         <p className="pr-6 border-r cursor-pointer hover:text-black">
           {t("Assesories")}
         </p>
+
       </div>
 
+      {/* Location + Delivery */}
       <div className="flex mx-3 mt-3 justify-between">
+
+        {/* Location */}
         <div className="flex items-center border border-gray-300 rounded-md overflow-hidden ml-4 mb-2 w-fit">
+
           <div className="bg-gray-100 px-2 h-8 flex items-center justify-center">
-            <MapPin size={18} className="h-full text-black" />
+            <MapPin
+              size={18}
+              className="h-full text-black"
+            />
           </div>
 
           <select
             className="flex-1 h-8 px-2 text-gray-700 focus:outline-none cursor-pointer"
-            defaultValue={t("abu_dhabi")}
+            defaultValue="Bahawalpur"
           >
             <option value="Bahawalpur">
               {t("bahawalpur")}
@@ -134,7 +154,9 @@ const Navbar = () => {
           </select>
         </div>
 
+        {/* Delivery */}
         <div className="flex">
+
           <div className="flex h-8 bg-[#db325e] p-1 rounded-md text-white">
             <Truck />
 
@@ -146,8 +168,17 @@ const Navbar = () => {
           <div className="mx-2 text-[#db325e] text-[12px] font-bold mt-2">
             {t("delivery_time")}
           </div>
+
         </div>
       </div>
+
+      {/* Contact Popup */}
+      {open && (
+        <div className="  absolute right-5 top-full z-[100]">
+          <Contact />
+        </div> 
+      )}
+
     </div>
   );
 };
