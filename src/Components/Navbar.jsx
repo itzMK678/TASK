@@ -172,7 +172,7 @@ const Navbar = () => {
 
       {/* Contact Popup */}
       {open && (
-        <div className="  absolute right-5 top-full z-[100]">
+        <div className="  absolute right-1 top-full z-[100]">
           <Contact />
         </div> 
       )}
